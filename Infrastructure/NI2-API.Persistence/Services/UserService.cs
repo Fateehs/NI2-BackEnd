@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NI2_API.Application.Abstractions.Services;
-using NI2_API.Application.DTOs;
+using NI2_API.Application.DTOs.User;
 using NI2_API.Domain.Entities.Identity;
 
 namespace NI2_API.Persistence.Services
