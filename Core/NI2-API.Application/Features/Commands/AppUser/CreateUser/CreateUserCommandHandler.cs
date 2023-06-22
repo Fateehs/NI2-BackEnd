@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using NI2_API.Application.Abstractions.Services;
-using NI2_API.Application.DTOs;
+using NI2_API.Application.DTOs.User;
 
 namespace NI2_API.Application.Features.Commands.AppUser.CreateUser
 {
