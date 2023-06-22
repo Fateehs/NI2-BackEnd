@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\NI2-API.Infrastructure\NI2-API.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\NI2-API.Persistence\NI2-API.Persistence.csproj" />
   </ItemGroup>
 

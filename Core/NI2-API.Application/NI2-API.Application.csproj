@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Commands\AppUser\LoginUser\" />
     <Folder Include="Features\Queries\AppUser\GetAllUsers\" />
   </ItemGroup>
 
