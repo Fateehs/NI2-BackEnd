@@ -25,6 +25,7 @@ namespace NI2_API.Persistence
             }).AddEntityFrameworkStores<NI2APIDbContext>().AddDefaultTokenProviders();
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthService, AuthService>();
         }
     }
 }
