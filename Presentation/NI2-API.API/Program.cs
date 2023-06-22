@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using NI2_API.Application;
+using NI2_API.Infrastructure;
 using NI2_API.Persistence;
 using System.Reflection;
 
@@ -10,6 +11,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices();
+builder.Services.AddInfrastructureServices();
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
 policy.WithOrigins(
