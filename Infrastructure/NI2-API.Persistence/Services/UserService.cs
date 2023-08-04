@@ -45,7 +45,7 @@ namespace NI2_API.Persistence.Services
             {
                 Id = user.Id,
                 SteamId = user.Id,   
-
+                UserName = user.UserName
             }).ToList();
         }
 

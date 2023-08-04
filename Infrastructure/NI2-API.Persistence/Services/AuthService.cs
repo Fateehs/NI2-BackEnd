@@ -2,6 +2,7 @@
 using NI2_API.Application.Abstractions.Services;
 using NI2_API.Application.Abstractions.Token;
 using NI2_API.Application.DTOs;
+using NI2_API.Application.DTOs.User;
 using NI2_API.Domain.Entities.Identity;
 
 namespace NI2_API.Persistence.Services
@@ -27,6 +28,7 @@ namespace NI2_API.Persistence.Services
 
             if (user == null)
                 throw new Exception("Kullanıcı bulunamadı hatası");
+
             SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
 
             if (result.Succeeded)
