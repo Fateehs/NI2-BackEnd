@@ -24,4 +24,8 @@
     <ProjectReference Include="..\..\Core\NI2-API.Domain\NI2-API.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
