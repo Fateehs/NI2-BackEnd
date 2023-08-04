@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NI2_API.Persistence.Contexts;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NI2_API.Persistence.Migrations
 {
     [DbContext(typeof(NI2APIDbContext))]
-    partial class NI2APIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230803122421_mig_1")]
+    partial class mig_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,37 +221,11 @@ namespace NI2_API.Persistence.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("NI2_API.Domain.Entities.User.Character", b =>
+            modelBuilder.Entity("NI2_API.Domain.Entities.Identity.Inventory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Characters");
-                });
-
-            modelBuilder.Entity("NI2_API.Domain.Entities.User.Inventory", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("CharacterId")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -309,39 +286,6 @@ namespace NI2_API.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("NI2_API.Domain.Entities.User.Character", b =>
-                {
-                    b.HasOne("NI2_API.Domain.Entities.Identity.AppUser", "AppUser")
-                        .WithMany("Characters")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("NI2_API.Domain.Entities.User.Inventory", b =>
-                {
-                    b.HasOne("NI2_API.Domain.Entities.User.Character", "Character")
-                        .WithOne("Inventory")
-                        .HasForeignKey("NI2_API.Domain.Entities.User.Inventory", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Character");
-                });
-
-            modelBuilder.Entity("NI2_API.Domain.Entities.Identity.AppUser", b =>
-                {
-                    b.Navigation("Characters");
-                });
-
-            modelBuilder.Entity("NI2_API.Domain.Entities.User.Character", b =>
-                {
-                    b.Navigation("Inventory")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618
