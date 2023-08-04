@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using NI2_API.Domain.Entities.Common;
 using NI2_API.Domain.Entities.Identity;
+using NI2_API.Domain.Entities.User;
+using System.Security.Cryptography.X509Certificates;
 
 namespace NI2_API.Persistence.Contexts
 {
@@ -11,8 +13,22 @@ namespace NI2_API.Persistence.Contexts
         {
         }
 
+        public DbSet<Character> Characters { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<AppUser>()
+                .HasMany(c => c.Characters)
+                .WithOne(u => u.AppUser)
+                .HasForeignKey(u => u.UserId);
+
+            builder.Entity<Character>()
+                .HasOne(i => i.Inventory)
+                .WithOne(c => c.Character)
+                .HasForeignKey<Inventory>(u => u.Id);
+              
+
             base.OnModelCreating(builder);
         }
 
